@@ -8,11 +8,21 @@ function createCar(plate:string, brand:string, color:string){
     displayAddWheelsForm(car);
 }
 
+function isPlateValid(plate: string) {
+    const pattern = new RegExp("^([0-9]{4})([A-Z]{3})$", "i");
+    return pattern.test(plate);
+}
+
 function callCreateCar() {
     const plate = retrieveInput("plate");
     const brand = retrieveInput("brand");
     const color = retrieveInput("color");
-    createCar(plate, brand, color);
+    
+    if (isPlateValid(plate)) {
+        createCar(plate, brand, color);
+    } else {
+        alert("Plate number not valid, must contain four digits and three letters (i.e. 1234ABC)");
+    }
 }
 
 function displayCarInfo(car: Car) {
@@ -26,14 +36,27 @@ function displayCarInfo(car: Car) {
     display.append(carData);
 }
 
+function isDiameterValid(diameter: number) {
+    return diameter >= 0.4 && diameter <= 2;
+}
+
 function displayAddWheelsForm(car: Car) {
     (<HTMLDivElement>document.querySelector("#carForm")).classList.toggle("display-none");
     (<HTMLDivElement>document.querySelector("#wheelsForm")).classList.toggle("display-none");
     (<HTMLButtonElement>document.querySelector("#addWheels")).addEventListener("click", function() {
+        const wheels: Wheel[] = [];
         for (let i = 1; i <= 4; i++) {
             const brand = (<HTMLInputElement>document.querySelector(`#wheel${i}Brand`)).value;
-            let diameter = parseInt((<HTMLInputElement>document.querySelector(`#wheel${i}Diameter`)).value);
-            const wheel = new Wheel(diameter, brand);
+            let diameter = parseFloat((<HTMLInputElement>document.querySelector(`#wheel${i}Diameter`)).value);
+            if (isDiameterValid(diameter)) {
+                wheels.push(new Wheel(diameter, brand));
+            } else {
+                alert(`Invalid diameter for wheel ${i}. Introduce a number between 0.4 and 2`);
+                wheels.splice(0, wheels.length);
+                break;
+            }
+        }
+        for (let wheel of wheels) {
             car.addWheel(wheel);
         }
         displayCarInfo(car);
