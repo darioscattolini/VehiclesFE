@@ -4,8 +4,8 @@ function retrieveInput(inputId) {
 }
 function createCar(plate, brand, color) {
     var car = new Car(plate, color, brand);
-    car.addWheel(new Wheel(2, "SEAT"));
     displayCarInfo(car);
+    displayAddWheelsForm(car);
 }
 function callCreateCar() {
     var plate = retrieveInput("plate");
@@ -22,4 +22,17 @@ function displayCarInfo(car) {
     carData.innerHTML += "<tr><td>Color</td> <td>" + car.color + "</td></tr>";
     carData.innerHTML += "<tr><td>Wheels</td> <td><pre>" + JSON.stringify(car.wheels, undefined, 2) + "</pre></td></tr>";
     display.append(carData);
+}
+function displayAddWheelsForm(car) {
+    document.querySelector("#carForm").classList.toggle("display-none");
+    document.querySelector("#wheelsForm").classList.toggle("display-none");
+    document.querySelector("#addWheels").addEventListener("click", function () {
+        for (var i = 1; i <= 4; i++) {
+            var brand = document.querySelector("#wheel" + i + "Brand").value;
+            var diameter = parseInt(document.querySelector("#wheel" + i + "Diameter").value);
+            var wheel = new Wheel(diameter, brand);
+            car.addWheel(wheel);
+        }
+        displayCarInfo(car);
+    });
 }

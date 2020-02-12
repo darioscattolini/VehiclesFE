@@ -6,13 +6,34 @@
 </head>
 <body>
     <div class="app">
-        <p>Fill the data below in order to build a new car:</p>
-        <div class="input">
-            <label for="plate">Plate: </label><input type="text" id="plate">
-            <label for="brand">Brand: </label><input type="text" id="brand">
-            <label for="color">Color: </label><input type="text" id="color">
+        <div id="carForm">
+            <p>Fill the data below in order to build a new car:</p>
+            <div class="input car-input">
+                <label for="plate">Plate: </label><input type="text" id="plate">
+                <label for="brand">Brand: </label><input type="text" id="brand">
+                <label for="color">Color: </label><input type="text" id="color">
+            </div>
+            <button onclick="callCreateCar()">Create car</button>
         </div>
-        <button onclick="callCreateCar()">Create car</button>
+
+        <div id="wheelsForm" class="display-none">
+            <p>Fill the data below in order to add wheels to the car:</p>
+            <div class="input wheel-input">
+                <span>Wheel 1</span>
+                <label for="wheel1Brand">Brand: </label><input type="text" id="wheel1Brand">
+                <label for="wheel1Diameter">Diameter: </label><input type="number" id="wheel1Diameter">
+                <span>Wheel 2</span>
+                <label for="wheel2Brand">Brand: </label><input type="text" id="wheel2Brand">
+                <label for="wheel2Diameter">Diameter: </label><input type="number" id="wheel2Diameter">
+                <span>Wheel 3</span>
+                <label for="wheel3Brand">Brand: </label><input type="text" id="wheel3Brand">
+                <label for="wheel3Diameter">Diameter: </label><input type="number" id="wheel3Diameter">
+                <span>Wheel 4</span>
+                <label for="wheel4Brand">Brand: </label><input type="text" id="wheel4Brand">
+                <label for="wheel4Diameter">Diameter: </label><input type="number" id="wheel4Diameter">
+            </div>
+            <button id="addWheels">Add wheels</button>
+        </div>
     </div>
     <div class="output" id="carInfo"></div>
 </body>

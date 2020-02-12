@@ -4,8 +4,8 @@ function retrieveInput(inputId: string) {
 
 function createCar(plate:string, brand:string, color:string){
     let car = new Car(plate, color, brand);
-    car.addWheel(new Wheel(2, "SEAT"));
     displayCarInfo(car);
+    displayAddWheelsForm(car);
 }
 
 function callCreateCar() {
@@ -24,4 +24,18 @@ function displayCarInfo(car: Car) {
     carData.innerHTML += `<tr><td>Color</td> <td>${car.color}</td></tr>`;
     carData.innerHTML += `<tr><td>Wheels</td> <td><pre>${JSON.stringify(car.wheels, undefined, 2)}</pre></td></tr>`;
     display.append(carData);
+}
+
+function displayAddWheelsForm(car: Car) {
+    (<HTMLDivElement>document.querySelector("#carForm")).classList.toggle("display-none");
+    (<HTMLDivElement>document.querySelector("#wheelsForm")).classList.toggle("display-none");
+    (<HTMLButtonElement>document.querySelector("#addWheels")).addEventListener("click", function() {
+        for (let i = 1; i <= 4; i++) {
+            const brand = (<HTMLInputElement>document.querySelector(`#wheel${i}Brand`)).value;
+            let diameter = parseInt((<HTMLInputElement>document.querySelector(`#wheel${i}Diameter`)).value);
+            const wheel = new Wheel(diameter, brand);
+            car.addWheel(wheel);
+        }
+        displayCarInfo(car);
+    });
 }

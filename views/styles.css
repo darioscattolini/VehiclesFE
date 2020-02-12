@@ -7,8 +7,12 @@ body {
 }
 
 .app {
-    max-width: 400px;
+    max-width: 90%;
     margin: auto;
+}
+
+.app p {
+    text-align: center;
 }
 
 .output {
@@ -18,20 +22,11 @@ body {
 .input {
     margin: 1em auto;
     display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 10px;
     row-gap: 1em;
+    column-gap: 10px;
 }
-
 .input input {
     font-size: inherit;
-    height: 2em;
-    padding-left: 0.6em;
-    padding-right: 0.6em;
-}
-
-.input label {
-    line-height: 2em;
 }
 
 button {
@@ -42,6 +37,39 @@ button {
     margin: auto;
 }
 
+.car-input {
+    max-width: 400px;
+    grid-template-columns: auto 1fr;
+}
+.car-input input {
+    height: 2em;
+    padding-left: 0.6em;
+    padding-right: 0.6em;
+}
+.car-input label {
+    line-height: 2em;
+}
+
+.wheel-input {
+    grid-template-columns: auto auto auto auto auto;
+    font-size: 0.9em;
+}
+.wheel-input input {
+    height: 1.5em;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+    width: 150px;
+    font-size: 0.9em;
+}
+.wheel-input label {
+    line-height: 1.5em;
+}
+.wheel-input span {
+    line-height: 1.5em;
+    font-weight: 600;
+    padding-right: 10px;
+}
+
 td {
     padding: 0.4em 1em;
 }
@@ -49,4 +77,8 @@ td {
 pre {
     font-family: inherit;
     font-size: inherit;
+}
+
+.display-none {
+    display: none;
 }
