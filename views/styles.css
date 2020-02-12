@@ -1,0 +1,52 @@
+body {
+    font-size: 18px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-content: center;
+}
+
+.app {
+    max-width: 400px;
+    margin: auto;
+}
+
+.output {
+    margin: auto;
+}
+
+.input {
+    margin: 1em auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 10px;
+    row-gap: 1em;
+}
+
+.input input {
+    font-size: inherit;
+    height: 2em;
+    padding-left: 0.6em;
+    padding-right: 0.6em;
+}
+
+.input label {
+    line-height: 2em;
+}
+
+button {
+    display: block;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 0.4em 1em;
+    margin: auto;
+}
+
+td {
+    padding: 0.4em 1em;
+}
+
+pre {
+    font-family: inherit;
+    font-size: inherit;
+}

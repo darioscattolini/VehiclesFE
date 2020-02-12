@@ -1,9 +1,18 @@
 <head>
-<script src="../models/car.js"></script>
-<script src="../models/wheel.js"></script>
-<script src="../controllers/controller.js"></script>
+    <script src="../models/car.js"></script>
+    <script src="../models/wheel.js"></script>
+    <script src="../controllers/controller.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <p id="carInfo"></p>
-    <button onclick="createCar('1212SDS','SEAT','ROJO')">Create car</button>
+    <div class="app">
+        <p>Fill the data below in order to build a new car:</p>
+        <div class="input">
+            <label for="plate">Plate: </label><input type="text" id="plate">
+            <label for="brand">Brand: </label><input type="text" id="brand">
+            <label for="color">Color: </label><input type="text" id="color">
+        </div>
+        <button onclick="callCreateCar()">Create car</button>
+    </div>
+    <div class="output" id="carInfo"></div>
 </body>
